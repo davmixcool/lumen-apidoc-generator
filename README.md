@@ -18,12 +18,12 @@ Automatically generate your API documentation from your existing Laravel routes.
 Require this package with composer using the following command:
 
 ```sh
-$ composer require mpociot/laravel-apidoc-generator
+$ composer require oxycoder/laravel-apidoc-generator
 ```
 Using Laravel < 5.5? Go to your `config/app.php` and add the service provider:
 
 ```php
-Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
+Oxycoder\ApiDoc\ApiDocGeneratorServiceProvider::class,
 ```
 
 > Using Laravel < 5.4? Use version 1.0! For Laravel 5.4 and up, use 2.0 instead.
@@ -65,7 +65,7 @@ Option | Description
 `force` | Force the re-generation of existing/modified API routes
 `header` | Custom HTTP headers to add to the example requests. Separate the header name and value with ":". For example: `--header="Authorization: CustomToken"`
 
-## Publish rule descriptions for customisation or translation.
+## Customisation or translation.
 
  By default, this package returns the descriptions in english. You can publish the packages language files, to customise and translate the documentation output.
 
@@ -73,7 +73,7 @@ Option | Description
  $ php artisan vendor:publish
  ```
 
- After the files are published you can customise or translate the descriptions in the language you want by renaming the `en` folder and editing the files in `public/vendor/apidoc/resources/lang`.
+ After the files are published you can customise view, styles or translate the descriptions in the language you want by renaming the `en` folder and editing the files in `public/vendor/apidoc/resources/lang`.
 
 
 ### How does it work?
@@ -234,10 +234,6 @@ As an optional parameter, you can use `--location` to tell the update command wh
 ## Skip single routes
 
 If you want to skip a single route from a list of routes that match a given prefix, you can use the `@hideFromAPIDocumentation` tag on the Controller method you do not want to document.
-
-## Further modification
-
-This package uses [Documentarian](https://github.com/mpociot/documentarian) to generate the API documentation. If you want to modify the CSS files of your documentation, or simply want to learn more about what is possible, take a look at the [Documentarian guide](http://marcelpociot.de/documentarian/installation).
 
 ### License
 

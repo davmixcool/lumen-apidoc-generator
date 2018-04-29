@@ -10,8 +10,7 @@
     "homepage": "http://github.com/oxycoder/laravel-apidoc-generator",
     "authors": [
         {
-            "name": "Tung",
-            "email": "m.pociot@gmail.com"
+            "name": "Tung"
         }
     ],
     "require": {
