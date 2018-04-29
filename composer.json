@@ -1,5 +1,5 @@
 {
-    "name": "mpociot/laravel-apidoc-generator",
+    "name": "oxycoder/laravel-apidoc-generator",
     "license": "MIT",
     "description": "Generate beautiful API documentation from your Laravel application",
     "keywords": [
@@ -7,10 +7,10 @@
         "Documentation",
         "Laravel"
     ],
-    "homepage": "http://github.com/mpociot/laravel-apidoc-generator",
+    "homepage": "http://github.com/oxycoder/laravel-apidoc-generator",
     "authors": [
         {
-            "name": "Marcel Pociot",
+            "name": "Tung",
             "email": "m.pociot@gmail.com"
         }
     ],
@@ -18,9 +18,11 @@
         "php": ">=5.5.0",
         "fzaninotto/faker": "~1.0",
         "laravel/framework": "~5.4",
-        "mpociot/documentarian": "^0.2.0",
-        "mpociot/reflection-docblock": "^1.0",
-        "ramsey/uuid": "^3.0"
+        "ramsey/uuid": "^3.0",
+        "mnapoli/front-yaml": "^1.5",
+        "windwalker/renderer": "3.*",
+        "mnapoli/silly": "~1.0",
+        "illuminate/view": "5.*"
     },
     "require-dev": {
         "orchestra/testbench": "~3.0",
@@ -29,19 +31,22 @@
         "mockery/mockery": "^0.9.5"
     },
     "autoload": {
+        "files": [
+            "src/Oxycoder/ApiDoc/Documentarian/helpers.php"
+        ],
         "psr-0": {
-            "Mpociot\\ApiDoc": "src/"
+            "Oxycoder\\ApiDoc": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Mpociot\\ApiDoc\\Tests\\": "tests/"
+            "Oxycoder\\ApiDoc\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Mpociot\\ApiDoc\\ApiDocGeneratorServiceProvider"
+                "Oxycoder\\ApiDoc\\ApiDocGeneratorServiceProvider"
             ]
        }
     }

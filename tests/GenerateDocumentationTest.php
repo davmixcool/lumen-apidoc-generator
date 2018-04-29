@@ -1,17 +1,17 @@
 <?php
 
-namespace Mpociot\ApiDoc\Tests;
+namespace Oxycoder\ApiDoc\Tests;
 
 use Illuminate\Routing\Route;
 use Orchestra\Testbench\TestCase;
 use Illuminate\Contracts\Console\Kernel;
 use Dingo\Api\Provider\LaravelServiceProvider;
-use Mpociot\ApiDoc\Generators\LaravelGenerator;
-use Mpociot\ApiDoc\Tests\Fixtures\TestController;
-use Mpociot\ApiDoc\ApiDocGeneratorServiceProvider;
+use Oxycoder\ApiDoc\Generators\LaravelGenerator;
+use Oxycoder\ApiDoc\Tests\Fixtures\TestController;
+use Oxycoder\ApiDoc\ApiDocGeneratorServiceProvider;
 use Illuminate\Support\Facades\Route as RouteFacade;
-use Mpociot\ApiDoc\Tests\Fixtures\DingoTestController;
-use Mpociot\ApiDoc\Tests\Fixtures\TestResourceController;
+use Oxycoder\ApiDoc\Tests\Fixtures\DingoTestController;
+use Oxycoder\ApiDoc\Tests\Fixtures\TestResourceController;
 
 class GenerateDocumentationTest extends TestCase
 {

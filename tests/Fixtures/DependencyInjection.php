@@ -1,6 +1,6 @@
 <?php
 
-namespace Mpociot\ApiDoc\Tests\Fixtures;
+namespace Oxycoder\ApiDoc\Tests\Fixtures;
 
 use Illuminate\Contracts\Filesystem\Filesystem;
 

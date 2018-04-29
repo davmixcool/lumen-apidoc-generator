@@ -1,13 +1,13 @@
 <?php
 
-namespace Mpociot\ApiDoc\Tests;
+namespace Oxycoder\ApiDoc\Tests;
 
 use Mockery as m;
 use Orchestra\Testbench\TestCase;
 use Illuminate\Translation\Translator;
 use Illuminate\Translation\LoaderInterface;
-use Mpociot\ApiDoc\Parsers\RuleDescriptionParser;
-use Mpociot\ApiDoc\ApiDocGeneratorServiceProvider;
+use Oxycoder\ApiDoc\Parsers\RuleDescriptionParser;
+use Oxycoder\ApiDoc\ApiDocGeneratorServiceProvider;
 
 class RuleDescriptionParserTest extends TestCase
 {
