@@ -3,7 +3,7 @@
 namespace Oxycoder\ApiDoc\Commands;
 
 use Illuminate\Console\Command;
-use Oxycoder\Documentarian\Documentarian;
+use Oxycoder\ApiDoc\Documentarian\Documentarian;
 
 class UpdateDocumentation extends Command
 {

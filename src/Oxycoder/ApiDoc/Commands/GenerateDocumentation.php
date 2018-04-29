@@ -4,10 +4,10 @@ namespace Oxycoder\ApiDoc\Commands;
 
 use ReflectionClass;
 use Illuminate\Console\Command;
-use Oxycoder\Reflection\DocBlock;
+use Oxycoder\ApiDoc\Reflection\DocBlock;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
-use Oxycoder\Documentarian\Documentarian;
+use Oxycoder\ApiDoc\Documentarian\Documentarian;
 use Oxycoder\ApiDoc\Postman\CollectionWriter;
 use Oxycoder\ApiDoc\Generators\DingoGenerator;
 use Oxycoder\ApiDoc\Generators\LaravelGenerator;

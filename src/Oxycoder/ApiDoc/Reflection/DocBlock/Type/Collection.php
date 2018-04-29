@@ -10,9 +10,9 @@
  * @link      http://phpdoc.org
  */
 
-namespace Oxycoder\Reflection\DocBlock\Type;
+namespace Oxycoder\ApiDoc\Reflection\DocBlock\Type;
 
-use Oxycoder\Reflection\DocBlock\Context;
+use Oxycoder\ApiDoc\Reflection\DocBlock\Context;
 
 /**
  * Collection

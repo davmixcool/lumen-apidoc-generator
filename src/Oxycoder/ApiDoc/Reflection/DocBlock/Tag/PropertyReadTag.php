@@ -10,7 +10,7 @@
  * @link      http://phpdoc.org
  */
 
-namespace Oxycoder\Reflection\DocBlock\Tag;
+namespace Oxycoder\ApiDoc\Reflection\DocBlock\Tag;
 
 /**
  * Reflection class for a @property-read tag in a Docblock.

@@ -10,9 +10,9 @@
  * @link      http://phpdoc.org
  */
 
-namespace Oxycoder\Reflection\DocBlock;
+namespace Oxycoder\ApiDoc\Reflection\DocBlock;
 
-use Oxycoder\Reflection\DocBlock;
+use Oxycoder\ApiDoc\Reflection\DocBlock;
 
 /**
  * Parses a tag definition for a DocBlock.
@@ -59,43 +59,43 @@ class Tag implements \Reflector
      */
     private static $tagHandlerMappings = array(
         'author'
-            => '\Mpociot\Reflection\DocBlock\Tag\AuthorTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\AuthorTag',
         'covers'
-            => '\Mpociot\Reflection\DocBlock\Tag\CoversTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\CoversTag',
         'deprecated'
-            => '\Mpociot\Reflection\DocBlock\Tag\DeprecatedTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\DeprecatedTag',
         'example'
-            => '\Mpociot\Reflection\DocBlock\Tag\ExampleTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\ExampleTag',
         'link'
-            => '\Mpociot\Reflection\DocBlock\Tag\LinkTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\LinkTag',
         'method'
-            => '\Mpociot\Reflection\DocBlock\Tag\MethodTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\MethodTag',
         'param'
-            => '\Mpociot\Reflection\DocBlock\Tag\ParamTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\ParamTag',
         'property-read'
-            => '\Mpociot\Reflection\DocBlock\Tag\PropertyReadTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\PropertyReadTag',
         'property'
-            => '\Mpociot\Reflection\DocBlock\Tag\PropertyTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\PropertyTag',
         'property-write'
-            => '\Mpociot\Reflection\DocBlock\Tag\PropertyWriteTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\PropertyWriteTag',
         'return'
-            => '\Mpociot\Reflection\DocBlock\Tag\ReturnTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\ReturnTag',
         'see'
-            => '\Mpociot\Reflection\DocBlock\Tag\SeeTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\SeeTag',
         'since'
-            => '\Mpociot\Reflection\DocBlock\Tag\SinceTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\SinceTag',
         'source'
-            => '\Mpociot\Reflection\DocBlock\Tag\SourceTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\SourceTag',
         'throw'
-            => '\Mpociot\Reflection\DocBlock\Tag\ThrowsTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\ThrowsTag',
         'throws'
-            => '\Mpociot\Reflection\DocBlock\Tag\ThrowsTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\ThrowsTag',
         'uses'
-            => '\Mpociot\Reflection\DocBlock\Tag\UsesTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\UsesTag',
         'var'
-            => '\Mpociot\Reflection\DocBlock\Tag\VarTag',
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\VarTag',
         'version'
-            => '\Mpociot\Reflection\DocBlock\Tag\VersionTag'
+            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\VersionTag'
     );
 
     /**

@@ -20,7 +20,6 @@
         "laravel/framework": "~5.4",
         "ramsey/uuid": "^3.0",
         "mnapoli/front-yaml": "^1.5",
-        "windwalker/renderer": "3.*",
         "mnapoli/silly": "~1.0",
         "illuminate/view": "5.*"
     },

@@ -1,9 +1,8 @@
 <?php
 
-namespace Oxycoder\Documentarian;
+namespace Oxycoder\ApiDoc\Documentarian;
 
 use Mni\FrontYAML\Parser;
-use Windwalker\Renderer\BladeRenderer;
 
 /**
  * Class Documentarian
@@ -32,6 +31,7 @@ class Documentarian
      */
     public function create($folder)
     {
+        $assetsDir = __DIR__ . '/../../../resources/assets';
         $folder = $folder . '/source';
         if (!is_dir($folder)) {
             mkdir($folder, 0777, true);
@@ -42,19 +42,19 @@ class Documentarian
         }
 
         // copy stub files
-        copy(__DIR__ . '/../../resources/assets/stubs/index.md', $folder . '/index.md');
-        copy(__DIR__ . '/../../resources/assets/stubs/gitignore.stub', $folder . '/.gitignore');
-        copy(__DIR__ . '/../../resources/assets/stubs/includes/_errors.md', $folder . '/includes/_errors.md');
-        copy(__DIR__ . '/../../resources/assets/stubs/package.json', $folder . '/package.json');
-        copy(__DIR__ . '/../../resources/assets/stubs/gulpfile.js', $folder . '/gulpfile.js');
-        copy(__DIR__ . '/../../resources/assets/stubs/config.php', $folder . '/config.php');
-        copy(__DIR__ . '/../../resources/assets/stubs/js/all.js', $folder . '/../js/all.js');
-        copy(__DIR__ . '/../../resources/assets/stubs/css/style.css', $folder . '/../css/style.css');
+        copy($assetsDir . '/stubs/index.md', $folder . '/index.md');
+        copy($assetsDir . '/stubs/gitignore.stub', $folder . '/.gitignore');
+        copy($assetsDir . '/stubs/includes/_errors.md', $folder . '/includes/_errors.md');
+        copy($assetsDir . '/stubs/package.json', $folder . '/package.json');
+        copy($assetsDir . '/stubs/gulpfile.js', $folder . '/gulpfile.js');
+        copy($assetsDir . '/stubs/config.php', $folder . '/config.php');
+        copy($assetsDir . '/stubs/js/all.js', $folder . '/../js/all.js');
+        copy($assetsDir . '/stubs/css/style.css', $folder . '/../css/style.css');
 
         // copy resources
-        rcopy(__DIR__ . '/../../resources/assets/images/', $folder . '/assets/images');
-        rcopy(__DIR__ . '/../../resources/assets/js/', $folder . '/assets/js');
-        rcopy(__DIR__ . '/../../resources/assets/stylus/', $folder . '/assets/stylus');
+        rcopy($assetsDir . '/images/', $folder . '/assets/images');
+        rcopy($assetsDir . '/js/', $folder . '/assets/js');
+        rcopy($assetsDir . '/stylus/', $folder . '/assets/stylus');
     }
 
     /**
@@ -78,8 +78,6 @@ class Documentarian
         $frontmatter = $document->getYAML();
         $html = $document->getContent();
 
-        $renderer = new BladeRenderer([__DIR__ . '/../../resources/views'], ['cache_path' => $source_dir . '/_tmp']);
-
         // Parse and include optional include markdown files
         if (isset($frontmatter['includes'])) {
             foreach ($frontmatter['includes'] as $include) {
@@ -90,10 +88,10 @@ class Documentarian
             }
         }
 
-        $output = $renderer->render('index', [
+        $output = view('apidoc::index', [
             'page' => $frontmatter,
             'content' => $html
-        ]);
+        ])->render();
 
         file_put_contents($folder . '/index.html', $output);
 

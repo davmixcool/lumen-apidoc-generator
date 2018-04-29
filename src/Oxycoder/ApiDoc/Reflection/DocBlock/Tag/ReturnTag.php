@@ -10,10 +10,10 @@
  * @link      http://phpdoc.org
  */
 
-namespace Oxycoder\Reflection\DocBlock\Tag;
+namespace Oxycoder\ApiDoc\Reflection\DocBlock\Tag;
 
-use Oxycoder\Reflection\DocBlock\Tag;
-use Oxycoder\Reflection\DocBlock\Type\Collection;
+use Oxycoder\ApiDoc\Reflection\DocBlock\Tag;
+use Oxycoder\ApiDoc\Reflection\DocBlock\Type\Collection;
 
 /**
  * Reflection class for a @return tag in a Docblock.

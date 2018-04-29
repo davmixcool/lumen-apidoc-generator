@@ -10,9 +10,9 @@
  * @link      http://phpdoc.org
  */
 
-namespace Oxycoder\Reflection\DocBlock\Tag;
+namespace Oxycoder\ApiDoc\Reflection\DocBlock\Tag;
 
-use Oxycoder\Reflection\DocBlock\Tag\VersionTag;
+use Oxycoder\ApiDoc\Reflection\DocBlock\Tag\VersionTag;
 
 /**
  * Reflection class for a @deprecated tag in a Docblock.

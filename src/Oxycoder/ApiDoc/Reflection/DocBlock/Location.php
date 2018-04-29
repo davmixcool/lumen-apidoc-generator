@@ -10,7 +10,7 @@
  * @link      http://phpdoc.org
  */
 
-namespace Oxycoder\Reflection\DocBlock;
+namespace Oxycoder\ApiDoc\Reflection\DocBlock;
 
 /**
  * The location a DocBlock occurs within a file.
