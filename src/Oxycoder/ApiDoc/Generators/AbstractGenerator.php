@@ -56,7 +56,7 @@ abstract class AbstractGenerator
     protected function getDocblockResponse($tags)
     {
         $responseTags = array_filter($tags, function ($tag) {
-            if (! ($tag instanceof Tag)) {
+            if (!($tag instanceof Tag)) {
                 return false;
             }
 
@@ -80,7 +80,12 @@ abstract class AbstractGenerator
     protected function getParameters($routeData, $routeAction, $bindings)
     {
         $validator = Validator::make([], $this->getRouteRules($routeAction['uses'], $bindings));
-        foreach ($validator->getRules() as $attribute => $rules) {
+        if (!empty($validator->getRules())) {
+            $ruleArr = $validator->getRules();
+        } else {
+            $ruleArr = $this->getVadilationInFunction($routeAction['uses'], $bindings);
+        }
+        foreach ($ruleArr as $attribute => $rules) {
             $attributeData = [
                 'required' => false,
                 'type' => null,
@@ -135,7 +140,7 @@ abstract class AbstractGenerator
     {
         $uri = $this->getUri($route);
         foreach ($bindings as $model => $id) {
-            $uri = str_replace('{'.$model.'}', $id, $uri);
+            $uri = str_replace('{' . $model . '}', $id, $uri);
         }
 
         return $uri;
@@ -192,6 +197,41 @@ abstract class AbstractGenerator
      */
     protected function getRouteRules($route, $bindings)
     {
+        list($class, $method) = explode('@', $route);
+        $reflection = new ReflectionClass($class);
+        $reflectionMethod = $reflection->getMethod($method);
+
+        foreach ($reflectionMethod->getParameters() as $parameter) {
+            $parameterType = $parameter->getClass();
+            if (!is_null($parameterType) && class_exists($parameterType->name)) {
+                $className = $parameterType->name;
+
+                if (is_subclass_of($className, FormRequest::class)) {
+                    $parameterReflection = new $className;
+                    // Add route parameter bindings
+                    $parameterReflection->query->add($bindings);
+                    $parameterReflection->request->add($bindings);
+
+                    if (method_exists($parameterReflection, 'validator')) {
+                        return $parameterReflection->validator()->getRules();
+                    } else {
+                        return $parameterReflection->rules();
+                    }
+                }
+            }
+        }
+
+        return [];
+    }
+
+    /**
+     * @param  $route
+     * @param  array $bindings
+     *
+     * @return array
+     */
+    protected function getVadilationInFunction($route, $bindings)
+    {
         $rules = []; // return available rules
         list($class, $method) = explode('@', $route);
         $reflection = new ReflectionClass($class);
@@ -207,41 +247,20 @@ abstract class AbstractGenerator
         $body = implode('', array_slice($source, $start_line, $length));
 
         preg_match('/(validate\(\[)(.*)(\]\))/s', $body, $result);
-        if (count($result) == 3) {
+        if ($result) {
             $stringArr = explode(',', $result[2]);
-
             foreach ($stringArr as $line) {
-                $lineRule = explode('=>', $line);
-                $key = trim($lineRule[0], " \t\n\r\0\x0B\"'"); // trim space and double/ single qoute
-                $value = trim($lineRule[1], " \t\n\r\0\x0B\"'"); // trim space and double/ single qoute
-                if ($key != '' && $value != '') {
-                    $rules[$key] = $value;
-                }
-            }
-        }
+                if (strpos($line, '=>') !== false) {
+                    $lineRule = explode('=>', $line);
 
-        foreach ($reflectionMethod->getParameters() as $parameter) {
-            $parameterType = $parameter->getClass();
-            if (! is_null($parameterType) && class_exists($parameterType->name)) {
-                $className = $parameterType->name;
-
-                if (is_subclass_of($className, FormRequest::class)) {
-                    $parameterReflection = new $className;
-                    // Add route parameter bindings
-                    $parameterReflection->query->add($bindings);
-                    $parameterReflection->request->add($bindings);
-
-                    if (method_exists($parameterReflection, 'validator')) {
-                        $rules[] = $parameterReflection->validator()->getRules();
-                        return $rules;
-                    } else {
-                        $rules[] = $parameterReflection->rules();
-                        return $rules;
+                    $key = trim($lineRule[0], " \t\n\r\0\x0B\"'"); // trim space and double/ single qoute
+                    $value = trim($lineRule[1], " \t\n\r\0\x0B\"'"); // trim space and double/ single qoute
+                    if ($key != '' && $value != '') {
+                        $rules[$key] = explode('|', $value);
                     }
                 }
             }
         }
-
         return $rules;
     }
 
@@ -255,7 +274,7 @@ abstract class AbstractGenerator
     protected function fancyImplode($arr, $first, $last)
     {
         $arr = array_map(function ($value) {
-            return '`'.$value.'`';
+            return '`' . $value . '`';
         }, $arr);
         array_push($arr, implode($last, array_splice($arr, -2)));
 
@@ -266,7 +285,7 @@ abstract class AbstractGenerator
     {
         $attribute = '';
         collect($parameters)->map(function ($item, $key) use (&$attribute, $first, $last) {
-            $attribute .= '`'.$item.'` ';
+            $attribute .= '`' . $item . '` ';
             if (($key + 1) % 2 === 0) {
                 $attribute .= $last;
             } else {
@@ -340,7 +359,7 @@ abstract class AbstractGenerator
                 }
                 break;
             case 'between':
-                if (! isset($attributeData['type'])) {
+                if (!isset($attributeData['type'])) {
                     $attributeData['type'] = 'numeric';
                 }
                 $attributeData['description'][] = Description::parse($rule)->with($parameters)->getDescription();
@@ -502,8 +521,8 @@ abstract class AbstractGenerator
         foreach ($headers as $name => $value) {
             $name = strtr(strtoupper($name), '-', '_');
 
-            if (! Str::startsWith($name, $prefix) && $name !== 'CONTENT_TYPE') {
-                $name = $prefix.$name;
+            if (!Str::startsWith($name, $prefix) && $name !== 'CONTENT_TYPE') {
+                $name = $prefix . $name;
             }
 
             $server[$name] = $value;
