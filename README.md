@@ -128,6 +128,16 @@ public function rules()
 }
 ```
 
+You can also use validate inside function
+```php
+$validatedData = $request->validate([
+    'title' => 'required|max:255',
+    'body' => 'required',
+    'type' => 'in:foo,bar',
+    'thumbnail' => 'required_if:type,foo|image',
+]);
+```
+
 **Result:** ![Form Request](http://marcelpociot.de/documentarian/form_request.png)
 
 #### Controller method doc block

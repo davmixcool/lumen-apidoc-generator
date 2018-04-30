@@ -192,9 +192,33 @@ abstract class AbstractGenerator
      */
     protected function getRouteRules($route, $bindings)
     {
+        $rules = []; // return available rules
         list($class, $method) = explode('@', $route);
         $reflection = new ReflectionClass($class);
         $reflectionMethod = $reflection->getMethod($method);
+
+        // parse raw function to find validator
+        $filename = $reflectionMethod->getFileName();
+        $start_line = $reflectionMethod->getStartLine();
+        $end_line = $reflectionMethod->getEndLine();
+        $length = $end_line - $start_line;
+
+        $source = file($filename);
+        $body = implode('', array_slice($source, $start_line, $length));
+
+        preg_match('/(validate\(\[)(.*)(\]\))/s', $body, $result);
+        if (count($result) == 3) {
+            $stringArr = explode(',', $result[2]);
+
+            foreach ($stringArr as $line) {
+                $lineRule = explode('=>', $line);
+                $key = trim($lineRule[0], " \t\n\r\0\x0B\"'"); // trim space and double/ single qoute
+                $value = trim($lineRule[1], " \t\n\r\0\x0B\"'"); // trim space and double/ single qoute
+                if ($key != '' && $value != '') {
+                    $rules[$key] = $value;
+                }
+            }
+        }
 
         foreach ($reflectionMethod->getParameters() as $parameter) {
             $parameterType = $parameter->getClass();
@@ -208,15 +232,17 @@ abstract class AbstractGenerator
                     $parameterReflection->request->add($bindings);
 
                     if (method_exists($parameterReflection, 'validator')) {
-                        return $parameterReflection->validator()->getRules();
+                        $rules[] = $parameterReflection->validator()->getRules();
+                        return $rules;
                     } else {
-                        return $parameterReflection->rules();
+                        $rules[] = $parameterReflection->rules();
+                        return $rules;
                     }
                 }
             }
         }
 
-        return [];
+        return $rules;
     }
 
     /**
