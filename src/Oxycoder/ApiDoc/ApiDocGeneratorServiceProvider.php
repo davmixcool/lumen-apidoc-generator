@@ -21,7 +21,7 @@ class ApiDocGeneratorServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../../resources/lang' => $this->resource_path('lang/vendor/apidoc'),
             __DIR__.'/../../resources/views' => $this->resource_path('views/vendor/apidoc'),
-            __DIR__.'/../../resources/assets' => $this->resource_path('views/vendor/assets'),
+            __DIR__.'/../../resources/assets' => $this->resource_path('views/vendor/apidoc/assets'),
         ]);
     }
 

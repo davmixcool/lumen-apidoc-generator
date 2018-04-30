@@ -12,6 +12,18 @@ class Documentarian
 {
 
     /**
+     * Return a fully qualified path to a given file.
+     *
+     * @param string $path
+     *
+     * @return string
+     */
+    private function resource_path($path = '')
+    {
+        return app()->basePath().'/resources'.($path ? '/'.$path : $path);
+    }
+
+    /**
      * Returns a config value
      *
      * @param string $key
@@ -31,7 +43,12 @@ class Documentarian
      */
     public function create($folder)
     {
-        $assetsDir = __DIR__ . '/../../../resources/assets';
+        if(file_exists(resource_path('views/vendor/apidoc/assets'))) {
+            $assetsDir = resource_path('views/vendor/apidoc/assets');
+        } else {
+            $assetsDir = __DIR__ . '/../../../resources/assets';
+        }
+
         $folder = $folder . '/source';
         if (!is_dir($folder)) {
             mkdir($folder, 0777, true);
