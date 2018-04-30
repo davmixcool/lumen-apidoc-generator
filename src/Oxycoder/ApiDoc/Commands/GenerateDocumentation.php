@@ -258,10 +258,16 @@ class GenerateDocumentation extends Command
         $routes = $this->getRoutes();
         $bindings = $this->getBindings();
         $parsedRoutes = [];
+        $headers = $this->option('header');
+        if (empty($headers)) {
+            $headers = [
+                'content-type' => 'application/json'
+            ];
+        }
         foreach ($routes as $route) {
             if (in_array($route->getName(), $allowedRoutes) || str_is($routePrefix, $generator->getUri($route)) || in_array($middleware, $route->middleware())) {
                 if ($this->isValidRoute($route) && $this->isRouteVisibleForDocumentation($route->getAction()['uses'])) {
-                    $parsedRoutes[] = $generator->processRoute($route, $bindings, $this->option('header'), $withResponse);
+                    $parsedRoutes[] = $generator->processRoute($route, $bindings, $headers, $withResponse);
                     $this->info('Processed route: ['.implode(',', $generator->getMethods($route)).'] '.$generator->getUri($route));
                 } else {
                     $this->warn('Skipping route: ['.implode(',', $generator->getMethods($route)).'] '.$generator->getUri($route));
