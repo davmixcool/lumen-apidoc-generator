@@ -261,7 +261,8 @@ class GenerateDocumentation extends Command
         $headers = $this->option('header');
         if (empty($headers)) {
             $headers = [
-                'content-type' => 'application/json'
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
             ];
         }
         foreach ($routes as $route) {
