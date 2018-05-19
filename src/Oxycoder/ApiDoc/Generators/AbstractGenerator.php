@@ -246,7 +246,7 @@ abstract class AbstractGenerator
         $source = file($filename);
         $body = implode('', array_slice($source, $start_line, $length));
 
-        preg_match('/(validate\(\[)(.*)(\]\))/s', $body, $result);
+        preg_match('/(validate\(\[)(.*?)(\]\))/s', $body, $result);
         if ($result) {
             $stringArr = explode(',', $result[2]);
             foreach ($stringArr as $line) {
