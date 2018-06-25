@@ -54,7 +54,6 @@ class LaravelGenerator extends AbstractGenerator
     public function processRoute($route, $bindings = [], $headers = [], $withResponse = true, $options = [])
     {
         $content = '';
-        $route->setUri($options['uri']);
 
         $routeAction = $route->getAction();
         $routeGroup = $this->getRouteGroup($routeAction['uses']);
