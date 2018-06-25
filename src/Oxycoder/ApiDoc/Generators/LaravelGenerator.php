@@ -47,12 +47,14 @@ class LaravelGenerator extends AbstractGenerator
      * @param array $bindings
      * @param array $headers
      * @param bool $withResponse
+     * @param array $options
      *
      * @return array
      */
-    public function processRoute($route, $bindings = [], $headers = [], $withResponse = true)
+    public function processRoute($route, $bindings = [], $headers = [], $withResponse = true, $options = [])
     {
         $content = '';
+        $route->setUri($options['uri']);
 
         $routeAction = $route->getAction();
         $routeGroup = $this->getRouteGroup($routeAction['uses']);
@@ -76,7 +78,7 @@ class LaravelGenerator extends AbstractGenerator
                 }
             }
             if (! $response) {
-                $response = $this->getRouteResponse($route, $bindings, $headers);
+                $response = $this->getRouteResponse($route, $bindings, $headers, $options['domain']);
             }
             if ($response->headers->get('Content-Type') === 'application/json') {
                 $content = json_decode($response->getContent(), JSON_PRETTY_PRINT);

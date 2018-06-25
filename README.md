@@ -4,13 +4,12 @@ Automatically generate your API documentation from your existing Laravel routes.
 
 `php artisan api:gen --routePrefix="settings/api/*"`
 
-![image](http://img.shields.io/packagist/v/mpociot/laravel-apidoc-generator.svg?style=flat)
-![image](http://img.shields.io/packagist/l/mpociot/laravel-apidoc-generator.svg?style=flat)
-[![codecov.io](https://codecov.io/github/mpociot/laravel-apidoc-generator/coverage.svg?branch=master)](https://codecov.io/github/mpociot/laravel-apidoc-generator?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mpociot/laravel-apidoc-generator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mpociot/laravel-apidoc-generator/?branch=master)
-[![Build Status](https://travis-ci.org/mpociot/laravel-apidoc-generator.svg?branch=master)](https://travis-ci.org/mpociot/laravel-apidoc-generator)
+![image](http://img.shields.io/packagist/v/oxycoder/laravel-apidoc-generator.svg?style=flat)
+![image](http://img.shields.io/packagist/l/oxycoder/laravel-apidoc-generator.svg?style=flat)
+[![codecov.io](https://codecov.io/github/oxycoder/laravel-apidoc-generator/coverage.svg?branch=master)](https://codecov.io/github/oxycoder/laravel-apidoc-generator?branch=master)
+[![Build Status](https://travis-ci.org/oxycoder/laravel-apidoc-generator.svg?branch=master)](https://travis-ci.org/oxycoder/laravel-apidoc-generator)
 [![StyleCI](https://styleci.io/repos/57999295/shield?style=flat)](https://styleci.io/repos/57999295)
-[![Dependency Status](https://www.versioneye.com/php/mpociot:laravel-apidoc-generator/dev-master/badge?style=flat)](https://www.versioneye.com/php/mpociot:laravel-apidoc-generator/dev-master)
+[![Dependency Status](https://www.versioneye.com/php/oxycoder:laravel-apidoc-generator/dev-master/badge?style=flat)](https://www.versioneye.com/php/oxycoder:laravel-apidoc-generator/dev-master)
 
 
 ## Installation
@@ -64,6 +63,7 @@ Option | Description
 `bindings` | List of route bindings that should be replaced when trying to retrieve route results. Syntax format: `binding_one,id|binding_two,id`
 `force` | Force the re-generation of existing/modified API routes
 `header` | Custom HTTP headers to add to the example requests. Separate the header name and value with ":". For example: `--header="Authorization: CustomToken"`
+`domain` | Custom domain to get response. Domain must end with "/". Will be ignore if `noResponseCalls` set to TRUE 
 
 ## Customisation or translation.
 
