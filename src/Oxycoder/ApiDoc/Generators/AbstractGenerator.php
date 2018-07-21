@@ -254,6 +254,11 @@ abstract class AbstractGenerator
         $body = implode('', array_slice($source, $start_line, $length));
 
         preg_match('/(validate\(\[)(.*?)(\]\))/s', $body, $result);
+        //if result is empty, add support for lumen 5.2^ validate($request,[rules]) helper method;
+        if(empty($result)){
+           preg_match('/(validate\(.+\,\[)(.*?)(\]\))/s', $body, $result);
+        }
+        
         if ($result) {
             $stringArr = explode(',', $result[2]);
             foreach ($stringArr as $line) {
