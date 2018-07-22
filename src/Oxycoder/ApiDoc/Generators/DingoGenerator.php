@@ -20,6 +20,8 @@ class DingoGenerator extends AbstractGenerator
      *
      * @return array
      */
+
+
     public function processRoute($route, $bindings = [], $headers = [], $withResponse = true)
      {
         $content = '';
@@ -55,8 +57,12 @@ class DingoGenerator extends AbstractGenerator
                 } catch (Exception $e) {
                 }
             }else{
-                //Formart explicietly defined response in the docblock
-                $response = json_decode( $response, JSON_PRETTY_PRINT); 
+                if (is_object($response)) {
+                    $response = json_decode(json_encode($response),JSON_PRETTY_PRINT);
+                }else{
+                    //Formart explicietly defined response in the docblock
+                    $response = json_decode( $response, JSON_PRETTY_PRINT); 
+                }
             }
             $content = $response;
         }
