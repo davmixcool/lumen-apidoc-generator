@@ -67,6 +67,7 @@ abstract class AbstractGenerator
         }
         $responseTag = \array_first($responseTags);
 
+
         return \response(\json_encode($responseTag->getContent()), 200, [
             'Content-Type' => 'application/json'
         ]);
@@ -82,11 +83,14 @@ abstract class AbstractGenerator
     protected function getParameters($routeData, $routeAction, $bindings)
     {
         $validator = Validator::make([], $this->getRouteRules($routeAction['uses'], $bindings));
+    
+
         if (!empty($validator->getRules())) {
             $ruleArr = $validator->getRules();
         } else {
             $ruleArr = $this->getVadilationInFunction($routeAction['uses'], $bindings);
         }
+
         foreach ($ruleArr as $attribute => $rules) {
             $attributeData = [
                 'required' => false,
@@ -100,6 +104,7 @@ abstract class AbstractGenerator
             }
             $routeData['parameters'][$attribute] = $attributeData;
         }
+
 
         return $routeData;
     }
@@ -217,14 +222,21 @@ abstract class AbstractGenerator
                     $parameterReflection = new $className;
                     // Add route parameter bindings
                     $parameterReflection->query->add($bindings);
-                    $parameterReflection->request->add($bindings);
+                   $parameterReflection->request->add($bindings);
 
                     if (method_exists($parameterReflection, 'validator')) {
                         return $parameterReflection->validator()->getRules();
                     } else {
                         return $parameterReflection->rules();
                     }
+
+                }else{
+                    //Get validation rules in method when form request class is absent
+                    return $this->getVadilationInFunctionRules($route, $bindings);
                 }
+
+
+
             }
         }
 
@@ -254,11 +266,11 @@ abstract class AbstractGenerator
         $body = implode('', array_slice($source, $start_line, $length));
 
         preg_match('/(validate\(\[)(.*?)(\]\))/s', $body, $result);
-        //if result is empty, add support for lumen 5.2^ validate($request,[rules]) helper method;
+        //if result is empty add support for lumen 5.2^ validate($request,[rules]) helper method;
         if(empty($result)){
            preg_match('/(validate\(.+\,\[)(.*?)(\]\))/s', $body, $result);
         }
-        
+
         if ($result) {
             $stringArr = explode(',', $result[2]);
             foreach ($stringArr as $line) {
@@ -275,6 +287,53 @@ abstract class AbstractGenerator
         }
         return $rules;
     }
+
+
+     /**
+     * @param  $route
+     * @param  array $bindings
+     *
+     * @return array
+     */
+    protected function getVadilationInFunctionRules($route, $bindings)
+    {
+        $rules = []; // return available rules
+        list($class, $method) = explode('@', $route);
+        $reflection = new ReflectionClass($class);
+        $reflectionMethod = $reflection->getMethod($method);
+
+        // parse raw function to find validator
+        $filename = $reflectionMethod->getFileName();
+        $start_line = $reflectionMethod->getStartLine();
+        $end_line = $reflectionMethod->getEndLine();
+        $length = $end_line - $start_line;
+
+        $source = file($filename);
+        $body = implode('', array_slice($source, $start_line, $length));
+
+        preg_match('/(validate\(\[)(.*?)(\]\))/s', $body, $result);
+        //if result is empty add support for lumen 5.2^ validate($request,[rules]) helper method;
+        if(empty($result)){
+           preg_match('/(validate\(.+\,\[)(.*?)(\]\))/s', $body, $result);
+        }
+
+        if ($result) {
+            $stringArr = explode(',', $result[2]);
+            foreach ($stringArr as $line) {
+                if (strpos($line, '=>') !== false) {
+                    $lineRule = explode('=>', $line);
+
+                    $key = trim($lineRule[0], " \t\n\r\0\x0B\"'"); // trim space and double/ single qoute
+                    $value = trim($lineRule[1], " \t\n\r\0\x0B\"'"); // trim space and double/ single qoute
+                    if ($key != '' && $value != '') {
+                        $rules[$key] = $value;
+                    }
+                }
+            }
+        }
+        return $rules;
+    }
+
 
     /**
      * @param  array  $arr
@@ -575,7 +634,7 @@ abstract class AbstractGenerator
      * @return array
      */
     protected function parseParameters($rule, $parameter)
-    {
+    {  
         if (strtolower($rule) === 'regex') {
             return [$parameter];
         }
