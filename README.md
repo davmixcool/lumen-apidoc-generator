@@ -145,7 +145,7 @@ With the transformer you can define the transformer that is used for the result 
 
 ```php
 /**
- * @transformer \Mpociot\ApiDoc\Tests\Fixtures\TestTransformer
+ * @transformer \Davmixcool\ApiDoc\Tests\Fixtures\TestTransformer
  */
 public function transformerTag()
 {
@@ -158,7 +158,7 @@ This is the same idea as the @tranformer tag with one different, instead of the 
 
 ```php
 /**
- * @transformercollection \Mpociot\ApiDoc\Tests\Fixtures\TestTransformer
+ * @transformercollection \Davmixcool\ApiDoc\Tests\Fixtures\TestTransformer
  */
 public function transformerCollectionTag()
 {
