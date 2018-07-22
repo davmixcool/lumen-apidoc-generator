@@ -3,8 +3,8 @@
 Automatically generate your API documentation from your existing Laravel routes. Take a look at the [example documentation](http://marcelpociot.de/whiteboard/).
 
 `php artisan api:gen --routePrefix="settings/api/*"`
-[![GitHub license](https://img.shields.io/github/license/davmixcool/laravel-apidoc-generator.svg)](https://github.com/davmixcool/laravel-apidoc-generator/blob/master/LICENSE.md)
 
+[![GitHub license](https://img.shields.io/github/license/davmixcool/laravel-apidoc-generator.svg)](https://github.com/davmixcool/laravel-apidoc-generator/blob/master/LICENSE.md)
 [![StyleCI](https://styleci.io/repos/57999295/shield?style=flat)](https://styleci.io/repos/57999295)
 [![GitHub issues](https://img.shields.io/github/issues/davmixcool/laravel-apidoc-generator.svg)](https://github.com/davmixcool/laravel-apidoc-generator/issues)
 
