@@ -112,7 +112,6 @@ class GenerateDocumentation extends Command
         $parsedRouteOutput = $parsedRoutes->map(function ($routeGroup) {
             return $routeGroup->map(function ($route) {
                 $route['output'] = (string) view('apidoc::partials.route')->with('parsedRoute', $route)->render();
-
                 return $route;
             });
         });
@@ -220,16 +219,22 @@ class GenerateDocumentation extends Command
      */
     private function setUserToBeImpersonated($actAs)
     {
+        $version = explode(' ', $this->laravel->version());
+        $framework_name = isset($version[0])? strtolower($version[0]) : 'Laravel';
         if (! empty($actAs)) {
-            if (version_compare($this->laravel->version(), '5.2.0', '<')) {
-                $userModel = config('auth.model');
-                $user = $userModel::find((int) $actAs);
-                $this->laravel['auth']->setUser($user);
-            } else {
-                $provider = $this->option('authProvider');
-                $userModel = config("auth.providers.$provider.model");
-                $user = $userModel::find((int) $actAs);
-                $this->laravel['auth']->guard($this->option('authGuard'))->setUser($user);
+            if($framework_name === 'lumen'){
+                //@TODO: Get auth model/Provider for Lumen
+            }else{
+                if (version_compare($this->laravel->version(), '5.2.0', '<')) {
+                    $userModel = config('auth.model');
+                    $user = $userModel::find((int) $actAs);
+                    $this->laravel['auth']->setUser($user);
+                } else {
+                    $provider = $this->option('authProvider');
+                    $userModel = config("auth.providers.$provider.model");
+                    $user = $userModel::find((int) $actAs);
+                    $this->laravel['auth']->guard($this->option('authGuard'))->setUser($user);
+                }
             }
         }
     }
@@ -303,6 +308,7 @@ class GenerateDocumentation extends Command
                 }
             }
         }
+
 
         return $parsedRoutes;
     }
