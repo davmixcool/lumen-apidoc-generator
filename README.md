@@ -4,12 +4,12 @@ Automatically generate your API documentation from your existing Laravel routes.
 
 `php artisan api:gen --routePrefix="settings/api/*"`
 
-![image](http://img.shields.io/packagist/v/oxycoder/laravel-apidoc-generator.svg?style=flat)
-![image](http://img.shields.io/packagist/l/oxycoder/laravel-apidoc-generator.svg?style=flat)
-[![codecov.io](https://codecov.io/github/oxycoder/laravel-apidoc-generator/coverage.svg?branch=master)](https://codecov.io/github/oxycoder/laravel-apidoc-generator?branch=master)
-[![Build Status](https://travis-ci.org/oxycoder/laravel-apidoc-generator.svg?branch=master)](https://travis-ci.org/oxycoder/laravel-apidoc-generator)
+![image](http://img.shields.io/packagist/v/davmixcool/laravel-apidoc-generator.svg?style=flat)
+![image](http://img.shields.io/packagist/l/davmixcool/laravel-apidoc-generator.svg?style=flat)
+[![codecov.io](https://codecov.io/github/davmixcool/laravel-apidoc-generator/coverage.svg?branch=master)](https://codecov.io/github/davmixcool/laravel-apidoc-generator?branch=master)
+[![Build Status](https://travis-ci.org/davmixcool/laravel-apidoc-generator.svg?branch=master)](https://travis-ci.org/davmixcool/laravel-apidoc-generator)
 [![StyleCI](https://styleci.io/repos/57999295/shield?style=flat)](https://styleci.io/repos/57999295)
-[![Dependency Status](https://www.versioneye.com/php/oxycoder:laravel-apidoc-generator/dev-master/badge?style=flat)](https://www.versioneye.com/php/oxycoder:laravel-apidoc-generator/dev-master)
+[![Dependency Status](https://www.versioneye.com/php/davmixcool:laravel-apidoc-generator/dev-master/badge?style=flat)](https://www.versioneye.com/php/davmixcool:laravel-apidoc-generator/dev-master)
 
 
 ## Installation
@@ -17,7 +17,7 @@ Automatically generate your API documentation from your existing Laravel routes.
 Require this package with composer using the following command:
 
 ```sh
-$ composer require oxycoder/laravel-apidoc-generator
+$ composer require davmixcool/laravel-apidoc-generator
 ```
 Using Laravel < 5.5? Go to your `config/app.php` and add the service provider:
 
@@ -131,6 +131,16 @@ public function rules()
 You can also use validate inside function
 ```php
 $validatedData = $request->validate([
+    'title' => 'required|max:255',
+    'body' => 'required',
+    'type' => 'in:foo,bar',
+    'thumbnail' => 'required_if:type,foo|image',
+]);
+```
+OR
+
+```php
+$this->validate($request,[
     'title' => 'required|max:255',
     'body' => 'required',
     'type' => 'in:foo,bar',
