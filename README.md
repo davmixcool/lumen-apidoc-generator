@@ -11,13 +11,6 @@ Automatically generate your API documentation using Dingo router in your Lumen a
 [![GitHub issues](https://img.shields.io/github/issues/davmixcool/lumen-apidoc-generator.svg)](https://github.com/davmixcool/lumen-apidoc-generator/issues)
 
 
-## Prerequisite
-
-- [Dingo Api Router](https://github.com/dingo/api/wiki/Installation)
-
-Make sure you have Dingo Api Router installed before you continue.
-
-
 ## Installation
 
 Require this package with composer using the following command:
