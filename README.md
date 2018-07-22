@@ -3,13 +3,11 @@
 Automatically generate your API documentation from your existing Laravel routes. Take a look at the [example documentation](http://marcelpociot.de/whiteboard/).
 
 `php artisan api:gen --routePrefix="settings/api/*"`
+[![GitHub license](https://img.shields.io/github/license/davmixcool/laravel-apidoc-generator.svg)](https://github.com/davmixcool/laravel-apidoc-generator/blob/master/LICENSE.md)
 
-![image](http://img.shields.io/packagist/v/davmixcool/laravel-apidoc-generator.svg?style=flat)
-![image](http://img.shields.io/packagist/l/davmixcool/laravel-apidoc-generator.svg?style=flat)
-[![codecov.io](https://codecov.io/github/davmixcool/laravel-apidoc-generator/coverage.svg?branch=master)](https://codecov.io/github/davmixcool/laravel-apidoc-generator?branch=master)
-[![Build Status](https://travis-ci.org/davmixcool/laravel-apidoc-generator.svg?branch=master)](https://travis-ci.org/davmixcool/laravel-apidoc-generator)
 [![StyleCI](https://styleci.io/repos/57999295/shield?style=flat)](https://styleci.io/repos/57999295)
-[![Dependency Status](https://www.versioneye.com/php/davmixcool:laravel-apidoc-generator/dev-master/badge?style=flat)](https://www.versioneye.com/php/davmixcool:laravel-apidoc-generator/dev-master)
+[![GitHub issues](https://img.shields.io/github/issues/davmixcool/laravel-apidoc-generator.svg)](https://github.com/davmixcool/laravel-apidoc-generator/issues)
+
 
 
 ## Installation
