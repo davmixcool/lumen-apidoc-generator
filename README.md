@@ -20,7 +20,7 @@ $ composer require davmixcool/laravel-apidoc-generator
 Using Laravel < 5.5? Go to your `config/app.php` and add the service provider:
 
 ```php
-Oxycoder\ApiDoc\ApiDocGeneratorServiceProvider::class,
+Davmixcool\ApiDoc\ApiDocGeneratorServiceProvider::class,
 ```
 
 > Using Laravel < 5.4? Use version 1.0! For Laravel 5.4 and up, use 2.0 instead.
