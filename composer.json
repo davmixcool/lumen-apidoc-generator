@@ -1,5 +1,5 @@
 {
-    "name": "oxycoder/laravel-apidoc-generator",
+    "name": "davmixcool/laravel-apidoc-generator",
     "license": "MIT",
     "description": "Generate beautiful API documentation from your Laravel application",
     "keywords": [
@@ -7,7 +7,7 @@
         "Documentation",
         "Laravel"
     ],
-    "homepage": "http://github.com/oxycoder/laravel-apidoc-generator",
+    "homepage": "http://github.com/davmixcool/laravel-apidoc-generator",
     "authors": [
         {
             "name": "Tung"
@@ -30,21 +30,21 @@
     },
     "autoload": {
         "files": [
-            "src/Oxycoder/ApiDoc/Documentarian/helpers.php"
+            "src/Davmixcool/ApiDoc/Documentarian/helpers.php"
         ],
         "psr-0": {
-            "Oxycoder\\ApiDoc": "src/"
+            "Davmixcool\\ApiDoc": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Oxycoder\\ApiDoc\\Tests\\": "tests/"
+            "Davmixcool\\ApiDoc\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Oxycoder\\ApiDoc\\ApiDocGeneratorServiceProvider"
+                "Davmixcool\\ApiDoc\\ApiDocGeneratorServiceProvider"
             ]
        }
     }
