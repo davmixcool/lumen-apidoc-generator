@@ -1,12 +1,14 @@
-## Laravel API Documentation Generator
+## Lumen API Documentation Generator
 
-Automatically generate your API documentation from your existing Laravel routes. Take a look at the [example documentation](http://marcelpociot.de/whiteboard/).
+Automatically generate your API documentation using Dingo router in your Lumen app. Take a look at the [example documentation](http://marcelpociot.de/whiteboard/).
 
-`php artisan api:gen --routePrefix="settings/api/*"`
 
-[![GitHub license](https://img.shields.io/github/license/davmixcool/laravel-apidoc-generator.svg)](https://github.com/davmixcool/laravel-apidoc-generator/blob/master/LICENSE.md)
+`php artisan api:generate --router="dingo" --routePrefix="v1"`
+
+
+[![GitHub license](https://img.shields.io/github/license/davmixcool/lumen-apidoc-generator.svg)](https://github.com/davmixcool/lumen-apidoc-generator/blob/master/LICENSE.md)
 [![StyleCI](https://styleci.io/repos/57999295/shield?style=flat)](https://styleci.io/repos/57999295)
-[![GitHub issues](https://img.shields.io/github/issues/davmixcool/laravel-apidoc-generator.svg)](https://github.com/davmixcool/laravel-apidoc-generator/issues)
+[![GitHub issues](https://img.shields.io/github/issues/davmixcool/lumen-apidoc-generator.svg)](https://github.com/davmixcool/lumen-apidoc-generator/issues)
 
 
 
@@ -14,34 +16,40 @@ Automatically generate your API documentation from your existing Laravel routes.
 
 Require this package with composer using the following command:
 
+
 ```sh
-$ composer require davmixcool/laravel-apidoc-generator
+$ composer require davmixcool/lumen-apidoc-generator
 ```
-Using Laravel < 5.5? Go to your `config/app.php` and add the service provider:
+
+Go to your `bootstrap/app.php` and register the service provider:
 
 ```php
-Davmixcool\ApiDoc\ApiDocGeneratorServiceProvider::class,
+$app->register(Davmixcool\ApiDoc\ApiDocGeneratorServiceProvider::class);
 ```
 
-> Using Laravel < 5.4? Use version 1.0! For Laravel 5.4 and up, use 2.0 instead.
 
 ## Usage
 
 To generate your API documentation, use the `api:generate` artisan command.
 
+
 ```sh
-$ php artisan api:generate --routePrefix="api/v1/*"
+$ php artisan api:generate --router="dingo" --routePrefix="v1"
 ```
 
-This command will scan your applications routes for the URIs matching `api/v1/*` and will parse these controller methods and form requests. For example:
+This command will scan your applications routes for the URIs matching `v1/*` and will parse these controller methods and validate rules. For example:
+
 
 ```php
-// API Group Routes
-Route::group(array('prefix' => 'api/v1', 'middleware' => []), function () {
-	// Custom route added to standard Resource
-	Route::get('example/foo', 'ExampleController@foo');
-	// Standard Resource route
-	Route::resource('example', 'ExampleController');
+$api = app('Dingo\Api\Routing\Router');
+
+$api->version('v1', function ($api) {
+    $api->group(['namespace' => 'App\Http\Controllers'], function ($api) {
+        // Custom get route added to standard Resource
+        $api->get('example/get', 'ExampleController@foo');
+        //Custom post route added to standard Resource
+        $api->post('example/post', 'ExampleController@save');
+    });
 });
 ```
 
@@ -109,33 +117,9 @@ class ExampleController extends Controller {
 
 ![Doc block result](http://headsquaredsoftware.co.uk/images/api_generator_docblock.png)
 
-#### Form request validation rules
+#### Validation rules
 
-To display a list of valid parameters, your API methods accepts, this package uses Laravels [Form Requests Validation](https://laravel.com/docs/5.2/validation#form-request-validation).
-
-
-```php
-public function rules()
-{
-    return [
-        'title' => 'required|max:255',
-        'body' => 'required',
-        'type' => 'in:foo,bar',
-        'thumbnail' => 'required_if:type,foo|image',
-    ];
-}
-```
-
-You can also use validate inside function
-```php
-$validatedData = $request->validate([
-    'title' => 'required|max:255',
-    'body' => 'required',
-    'type' => 'in:foo,bar',
-    'thumbnail' => 'required_if:type,foo|image',
-]);
-```
-OR
+To display a list of valid parameters, your API methods accepts, this package uses Lumen Validation Helper Method [Validation](https://lumen.laravel.com/docs/5.6/validation).
 
 ```php
 $this->validate($request,[
@@ -207,13 +191,13 @@ If your API route accepts a `GET` method, this package tries to call the API rou
 If your API needs an authenticated user, you can use the `actAsUserId` option to specify a user ID that will be used for making these API calls:
 
 ```sh
-$ php artisan api:generate --routePrefix="api/*" --actAsUserId=1
+$ php artisan api:generate --router="dingo" --routePrefix="v1" --actAsUserId=1
 ```
 
 If you don't want to automatically perform API response calls, use the `noResponseCalls` option.
 
 ```sh
-$ php artisan api:generate --routePrefix="api/*" --noResponseCalls
+$ php artisan api:generate --router="dingo" --routePrefix="v1" --noResponseCalls
 ```
 
 > Note: The example API responses work best with seeded data.
@@ -223,8 +207,6 @@ $ php artisan api:generate --routePrefix="api/*" --noResponseCalls
 The generator automatically creates a Postman collection file, which you can import to use within your [Postman App](https://www.getpostman.com/apps) for even simpler API testing and usage.
 
 If you don't want to create a Postman collection, use the `--noPostmanCollection` option, when generating the API documentation.
-
-As of Laravel 5.3, the default base URL added to the Postman collection will be that found in your Laravel `config/app.php` file. This will likely be `http://localhost`. If you wish to change this setting you can directly update the url or link this config value to your environment file to make it more flexible (as shown below):
 
 ```php
 'url' => env('APP_URL', 'http://yourappdefault.app'),
@@ -255,4 +237,4 @@ If you want to skip a single route from a list of routes that match a given pref
 
 ### License
 
-The Laravel API Documentation Generator is free software licensed under the MIT license.
+The Lumen API Documentation Generator is free software licensed under the MIT license.

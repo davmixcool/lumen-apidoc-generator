@@ -1,13 +1,14 @@
 {
-    "name": "davmixcool/laravel-apidoc-generator",
+    "name": "davmixcool/lumen-apidoc-generator",
     "license": "MIT",
-    "description": "Generate beautiful API documentation from your Laravel application",
+    "description": "Generate beautiful API documentation using Dingo router from your Lumen application",
     "keywords": [
         "API",
         "Documentation",
+        "Lumen",
         "Laravel"
     ],
-    "homepage": "http://github.com/davmixcool/laravel-apidoc-generator",
+    "homepage": "http://github.com/davmixcool/lumen-apidoc-generator",
     "authors": [
         {
             "name": "Tung"
