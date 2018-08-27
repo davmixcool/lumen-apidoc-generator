@@ -1,6 +1,6 @@
 <?php
 
-namespace Oxycoder\ApiDoc\Documentarian;
+namespace Davmixcool\ApiDoc\Documentarian;
 
 use Mni\FrontYAML\Parser;
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace Oxycoder\ApiDoc\Generators;
+namespace Davmixcool\ApiDoc\Generators;
 
 use Exception;
 
 use League\Fractal\Manager;
 use League\Fractal\Resource\Item;
-use Oxycoder\ApiDoc\Reflection\DocBlock\Tag;
+use Davmixcool\ApiDoc\Reflection\DocBlock\Tag;
 use League\Fractal\Resource\Collection;
 use ReflectionClass;
 

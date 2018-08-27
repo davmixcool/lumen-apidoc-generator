@@ -1,16 +1,16 @@
 <?php
 
-namespace Oxycoder\ApiDoc\Generators;
+namespace Davmixcool\ApiDoc\Generators;
 
 use Faker\Factory;
 use ReflectionClass;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Oxycoder\ApiDoc\Reflection\DocBlock;
-use Oxycoder\ApiDoc\Reflection\DocBlock\Tag;
+use Davmixcool\ApiDoc\Reflection\DocBlock;
+use Davmixcool\ApiDoc\Reflection\DocBlock\Tag;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Oxycoder\ApiDoc\Parsers\RuleDescriptionParser as Description;
+use Davmixcool\ApiDoc\Parsers\RuleDescriptionParser as Description;
 
 abstract class AbstractGenerator
 {

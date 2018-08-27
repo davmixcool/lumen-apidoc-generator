@@ -10,9 +10,9 @@
  * @link      http://phpdoc.org
  */
 
-namespace Oxycoder\ApiDoc\Reflection\DocBlock;
+namespace Davmixcool\ApiDoc\Reflection\DocBlock;
 
-use Oxycoder\ApiDoc\Reflection\DocBlock;
+use Davmixcool\ApiDoc\Reflection\DocBlock;
 
 /**
  * Parses a tag definition for a DocBlock.
@@ -59,43 +59,43 @@ class Tag implements \Reflector
      */
     private static $tagHandlerMappings = array(
         'author'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\AuthorTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\AuthorTag',
         'covers'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\CoversTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\CoversTag',
         'deprecated'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\DeprecatedTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\DeprecatedTag',
         'example'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\ExampleTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\ExampleTag',
         'link'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\LinkTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\LinkTag',
         'method'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\MethodTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\MethodTag',
         'param'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\ParamTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\ParamTag',
         'property-read'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\PropertyReadTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\PropertyReadTag',
         'property'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\PropertyTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\PropertyTag',
         'property-write'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\PropertyWriteTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\PropertyWriteTag',
         'return'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\ReturnTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\ReturnTag',
         'see'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\SeeTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\SeeTag',
         'since'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\SinceTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\SinceTag',
         'source'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\SourceTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\SourceTag',
         'throw'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\ThrowsTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\ThrowsTag',
         'throws'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\ThrowsTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\ThrowsTag',
         'uses'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\UsesTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\UsesTag',
         'var'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\VarTag',
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\VarTag',
         'version'
-            => '\Oxycoder\\ApiDoc\Reflection\DocBlock\Tag\VersionTag'
+            => '\Davmixcool\\ApiDoc\Reflection\DocBlock\Tag\VersionTag'
     );
 
     /**

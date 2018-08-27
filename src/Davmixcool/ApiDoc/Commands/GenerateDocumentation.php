@@ -1,17 +1,17 @@
 <?php
 
-namespace Oxycoder\ApiDoc\Commands;
+namespace Davmixcool\ApiDoc\Commands;
 
 use ReflectionClass;
 use Illuminate\Console\Command;
-use Oxycoder\ApiDoc\Reflection\DocBlock;
+use Davmixcool\ApiDoc\Reflection\DocBlock;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
-use Oxycoder\ApiDoc\Documentarian\Documentarian;
-use Oxycoder\ApiDoc\Postman\CollectionWriter;
-use Oxycoder\ApiDoc\Generators\DingoGenerator;
-use Oxycoder\ApiDoc\Generators\LaravelGenerator;
-use Oxycoder\ApiDoc\Generators\AbstractGenerator;
+use Davmixcool\ApiDoc\Documentarian\Documentarian;
+use Davmixcool\ApiDoc\Postman\CollectionWriter;
+use Davmixcool\ApiDoc\Generators\DingoGenerator;
+use Davmixcool\ApiDoc\Generators\LaravelGenerator;
+use Davmixcool\ApiDoc\Generators\AbstractGenerator;
 
 class GenerateDocumentation extends Command
 {

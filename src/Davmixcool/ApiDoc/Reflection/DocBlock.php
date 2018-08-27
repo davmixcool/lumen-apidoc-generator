@@ -10,11 +10,11 @@
  * @link      http://phpdoc.org
  */
 
-namespace Oxycoder\ApiDoc\Reflection;
+namespace Davmixcool\ApiDoc\Reflection;
 
-use Oxycoder\ApiDoc\Reflection\DocBlock\Tag;
-use Oxycoder\ApiDoc\Reflection\DocBlock\Context;
-use Oxycoder\ApiDoc\Reflection\DocBlock\Location;
+use Davmixcool\ApiDoc\Reflection\DocBlock\Tag;
+use Davmixcool\ApiDoc\Reflection\DocBlock\Context;
+use Davmixcool\ApiDoc\Reflection\DocBlock\Location;
 
 /**
  * Parses the DocBlock for any structure.

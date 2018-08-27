@@ -1,6 +1,6 @@
 <?php
 
-namespace Oxycoder\ApiDoc\Parsers;
+namespace Davmixcool\ApiDoc\Parsers;
 
 class RuleDescriptionParser
 {

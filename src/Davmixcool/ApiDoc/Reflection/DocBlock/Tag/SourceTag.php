@@ -10,9 +10,9 @@
  * @link      http://phpdoc.org
  */
 
-namespace Oxycoder\ApiDoc\Reflection\DocBlock\Tag;
+namespace Davmixcool\ApiDoc\Reflection\DocBlock\Tag;
 
-use Oxycoder\ApiDoc\Reflection\DocBlock\Tag;
+use Davmixcool\ApiDoc\Reflection\DocBlock\Tag;
 
 /**
  * Reflection class for a @source tag in a Docblock.

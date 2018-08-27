@@ -1,13 +1,13 @@
 <?php
 
-namespace Oxycoder\ApiDoc\Generators;
+namespace Davmixcool\ApiDoc\Generators;
 
 use ReflectionClass;
 use League\Fractal\Manager;
 use Illuminate\Routing\Route;
 use League\Fractal\Resource\Item;
 use Illuminate\Support\Facades\App;
-use Oxycoder\ApiDoc\Reflection\DocBlock\Tag;
+use Davmixcool\ApiDoc\Reflection\DocBlock\Tag;
 use Illuminate\Support\Facades\Request;
 use League\Fractal\Resource\Collection;
 use Illuminate\Foundation\Http\FormRequest;

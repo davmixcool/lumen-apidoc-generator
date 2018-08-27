@@ -10,9 +10,9 @@
  * @link      http://phpdoc.org
  */
 
-namespace Oxycoder\ApiDoc\Reflection\DocBlock;
+namespace Davmixcool\ApiDoc\Reflection\DocBlock;
 
-use Oxycoder\ApiDoc\Reflection\DocBlock;
+use Davmixcool\ApiDoc\Reflection\DocBlock;
 
 /**
  * Parses a Description of a DocBlock or tag.

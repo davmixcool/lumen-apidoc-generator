@@ -1,6 +1,6 @@
 <?php
 
-namespace Oxycoder\ApiDoc\Postman;
+namespace Davmixcool\ApiDoc\Postman;
 
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Collection;

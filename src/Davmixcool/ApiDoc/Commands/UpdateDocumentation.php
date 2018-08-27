@@ -1,9 +1,9 @@
 <?php
 
-namespace Oxycoder\ApiDoc\Commands;
+namespace Davmixcool\ApiDoc\Commands;
 
 use Illuminate\Console\Command;
-use Oxycoder\ApiDoc\Documentarian\Documentarian;
+use Davmixcool\ApiDoc\Documentarian\Documentarian;
 
 class UpdateDocumentation extends Command
 {

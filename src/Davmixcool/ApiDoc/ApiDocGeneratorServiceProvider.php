@@ -1,10 +1,10 @@
 <?php
 
-namespace Oxycoder\ApiDoc;
+namespace Davmixcool\ApiDoc;
 
 use Illuminate\Support\ServiceProvider;
-use Oxycoder\ApiDoc\Commands\UpdateDocumentation;
-use Oxycoder\ApiDoc\Commands\GenerateDocumentation;
+use Davmixcool\ApiDoc\Commands\UpdateDocumentation;
+use Davmixcool\ApiDoc\Commands\GenerateDocumentation;
 
 class ApiDocGeneratorServiceProvider extends ServiceProvider
 {
